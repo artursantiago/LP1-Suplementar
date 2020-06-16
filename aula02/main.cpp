@@ -4,9 +4,8 @@
 int main(int argc, char const *argv[])
 {
   std::string message = "";
-  std::string add = "add";
 
-  if (argc == 1 || (argc >= 2 && add.compare(argv[1]) != 0)) {
+  if (argc == 1 || (argc >= 2 && std::string(argv[1]).compare("add") != 0)) {
     std::cout << "CORRECT USE: " << argv[0] << " add <message> \nOR: " << argv[0] << " add \n";
     return 1;
   }
