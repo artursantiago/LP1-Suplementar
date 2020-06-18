@@ -6,8 +6,13 @@ int main(int argc, char const *argv[])
 {
   std::string message = "";
 
-  std::ofstream output_file{"output.txt"};
+  std::ofstream output_file{"output.txt", std::ios::app};
 
+  if (output_file.fail()) {
+    std::cerr << "The file couldn't be opened" << std::endl;
+    return 1;
+  }
+  
   if (argc == 1 || (argc >= 2 && std::string(argv[1]) != "add")) {
     std::cout << "CORRECT USE: " << argv[0] << " add <message> \nOR: " << argv[0] << " add \n";
     return 1;
@@ -20,7 +25,7 @@ int main(int argc, char const *argv[])
     getline(std::cin, message);
   }
   
-  output_file << message;
+  output_file << message << "\n";
   output_file.close();
 
   std::cout << "The message was sucessfully stored!\n";
