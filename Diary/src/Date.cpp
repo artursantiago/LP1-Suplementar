@@ -10,8 +10,8 @@ Date::Date() :
 {  
 }
 
-bool Date::is_equal(const std::string &date) {
-  return to_string() == date;;
+bool Date::is_equal(Date &date) {
+  return to_string() == date.to_string();
 }
 
 void Date::set_from_string(const std::string &date) {
@@ -27,14 +27,8 @@ void Date::set_from_string(const std::string &date) {
 
 std::string Date::to_string() {
   std::stringstream stream;
-  if (day < 10) {
-    stream << '0';
-  }
-  stream << day << "/";
-    if (month < 10) {
-    stream << '0';
-  }
-  stream << month << "/";
+  stream << (day < 10 ? "0" : "") << day << "/";
+  stream << (month < 10 ? "0" : "") << month << "/";
   stream << year;
 
   return stream.str();

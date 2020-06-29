@@ -2,5 +2,8 @@
 
 !*.*
 !*/
+!Makefile
 
+*.o
+*.zip
 *.vscode/*
