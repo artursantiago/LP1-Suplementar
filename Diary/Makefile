@@ -9,7 +9,7 @@ zip: src/* include/* resources/*
 	zip $(MATRICULA).zip src/* include/* resources/*
 
 $(PROGRAMA): main.o App.o Diary.o Message.o Date.o Time.o Util.o
-	$(GCC) $(GCC_FLAGS) -o diary *.o
+	$(GCC) $(GCC_FLAGS) -o diary *.o 
 
 main.o: src/main.cpp 
 	$(GCC) $(GCC_FLAGS) -c src/main.cpp
