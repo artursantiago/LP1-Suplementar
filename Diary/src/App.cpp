@@ -61,9 +61,9 @@ void App::add(const std::string &content) {
 
 void App::list_messages() {
   for (size_t i = 0; i < diary.messages.size(); ++i) {
-    if (!(i > 0 && diary.messages[i-1].date.is_equal(diary.messages[i].date))) {
-      std::cout << (i == 0 ? "" : "\n")<< "# " << diary.messages[i].date.to_string() << std::endl;
-    }
+    // if (!(i > 0 && diary.messages[i-1].date.is_equal(diary.messages[i].date))) {
+    //   std::cout << (i == 0 ? "" : "\n")<< "# " << diary.messages[i].date.to_string() << std::endl;
+    // }
     std::cout << "- " << diary.messages[i].time.to_string() << " " << diary.messages[i].content << std::endl;
   }
 }
@@ -76,9 +76,9 @@ void App::search(const std::string& what) {
   }
 
   for (size_t i = 0; i < match_messages.size(); ++i) {
-    if (!(i > 0 && match_messages[i-1]->date.is_equal(match_messages[i]->date))) {
-      std::cout << (i == 0 ? "" : "\n")<< "# " << match_messages[i]->date.to_string() << std::endl;
-    }
+    // if (!(i > 0 && match_messages[i-1]->date.is_equal(match_messages[i]->date))) {
+    //   std::cout << (i == 0 ? "" : "\n")<< "# " << match_messages[i]->date.to_string() << std::endl;
+    // }
     std::cout << "- " << match_messages[i]->time.to_string() << " " << match_messages[i]->content << std::endl;
   }
   

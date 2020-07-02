@@ -1,5 +1,5 @@
 GCC = g++
-GCC_FLAGS = -I include -std=c++11
+GCC_FLAGS = -I include -std=c++11 -g
 PROGRAMA = diary
 MATRICULA = 20190042017
 
@@ -31,6 +31,10 @@ Time.o: src/Time.cpp include/Time.h
 
 Util.o: src/Util.cpp include/Util.h
 	$(GCC) $(GCC_FLAGS) -c src/Util.cpp
+
+clean:
+	rm -f *.o
+	rm diary
 
 # Arquivos que não existem no disco
 .PHONY: all zip
