@@ -4,7 +4,6 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <iostream>
 
 Diary::Diary(const std::string &filename) : filename(filename)
 {
@@ -12,6 +11,7 @@ Diary::Diary(const std::string &filename) : filename(filename)
 }
 
 Diary::~Diary() {
+  write();
 }
 
 void Diary::load() {
@@ -19,7 +19,9 @@ void Diary::load() {
   std::ifstream file(filename);
 
   if (!file.is_open() || file.fail()) {
-    throw std::runtime_error("The file couldn't be opened.");
+    std::ofstream file_out(filename);
+    file_out.close();
+    return;
   }
   
   std::string date;
@@ -50,6 +52,8 @@ void Diary::load() {
       add(message);
     }
   }
+
+  file.close();
 }
 
 std::vector<Message*> Diary::search(const std::string& what) {
@@ -86,5 +90,6 @@ void Diary::write() {
     }
     file << "- " << messages[i].time.to_string() << " " << messages[i].content << std::endl;
   }
-  
+
+  file.close();
 }
