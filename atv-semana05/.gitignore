@@ -1,0 +1,12 @@
+*
+
+!*.*
+!*/
+!Makefile
+
+*.o
+*.zip
+*.vscode/*
+
+diary.md
+diary.config
