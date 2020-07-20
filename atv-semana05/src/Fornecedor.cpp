@@ -14,8 +14,8 @@ Fornecedor::~Fornecedor()
   this->update();
 }
 
-bool repassaProdutos(std::string produto, int quantidade) {
-  
+bool repassaProdutos(std::string produto, int quantidade) 
+{  
 }
 
 void Fornecedor::load()

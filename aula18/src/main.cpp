@@ -1,0 +1,38 @@
+#include "Conta.h"
+#include "Cliente.h"
+#include "Agencia.h"
+
+#include <iostream>
+
+int main(int argc, char const *argv[])
+{
+  Agencia agencia(11111, "Nubank");
+
+  ClientePF cliente1("Artur Melo", "00000000000");
+  ClientePF cliente2("Samuel Gomes", "99999999999");
+
+  Conta conta_cliente1(cliente1, agencia, 12345, 10500);
+  Conta conta_cliente2(cliente2, agencia, 12345, 100500);
+  Conta co3;
+
+  // irá ter 3 clientes pq a 3 conta cria automaticametne o 3 cliente
+  std::cout << "Total de " << ClientePF::totalClientesPF << " clientes." << std::endl;
+  std::cout << "Total de " << Conta::total_contas << " contas." << std::endl;
+  std::cout << std::endl;
+
+  std::cout << conta_cliente1.titular.getNome() <<" está sacando dinheiro. Seu saldo anterior era " << conta_cliente1.saldo << std::endl;
+  conta_cliente1.sacar(1250);
+  std::cout << "Seu novo saldo é " << conta_cliente1.saldo << std::endl;
+  
+  std::cout << conta_cliente1.titular.getNome() <<" está depositando dinheiro. Seu saldo anterior era " << conta_cliente1.saldo << std::endl;
+  conta_cliente1.depositar(2550);
+  std::cout << "Seu novo saldo é " << conta_cliente1.saldo << std::endl;
+
+  std::cout << conta_cliente2.titular.getNome() <<" está transferindo dinheiro para " << conta_cliente1.titular.getNome() << std::endl 
+            << "O saldo anterior de " << conta_cliente2.titular.getNome() << "era " << conta_cliente2.saldo << std::endl
+            << "O saldo anterior de " << conta_cliente1.titular.getNome() << "era " << conta_cliente1.saldo << std::endl;
+  conta_cliente2.transferir(10000, conta_cliente1);
+  std::cout << "O saldo atual de " << conta_cliente2.titular.getNome() << "é " << conta_cliente2.saldo << std::endl
+            << "O saldo atual de " << conta_cliente1.titular.getNome() << "é " << conta_cliente1.saldo << std::endl;
+  return 0;
+}
